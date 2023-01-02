@@ -2,13 +2,9 @@ import types
 
 
 def flat_generator(list_of_lists):
-    x = -1
-    while x < len(list_of_lists) - 1:
-        x += 1
-        y = -1
-        while y < len(list_of_lists[x]) - 1:
-            y += 1   
-            yield list_of_lists[x][y]
+    for sublist in list_of_lists:
+        for item in sublist:
+            yield item
 
 
 
@@ -34,10 +30,10 @@ def test_2():
 
 if __name__ == '__main__':
     test_2()
-    # list_of_lists_1 = [
-    #     ['a', 'b', 'c'],
-    #     ['d', 'e', 'f', 'h', False],
-    #     [1, 2, None]
-    # ]
-    # for i in flat_generator(list_of_lists_1):
-    #     print(i)
+    list_of_lists_1 = [
+        ['a', 'b', 'c'],
+        ['d', 'e', 'f', 'h', False],
+        [1, 2, None]
+    ]
+    for i in flat_generator(list_of_lists_1):
+        print(i)
